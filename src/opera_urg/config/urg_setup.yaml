@@ -1,0 +1,32 @@
+# base_link から見た urg_11（192.168.0.11）の位置。
+# x, y はメートル。yaw はラジアンで、反時計回りが正。
+urg_11:
+  x: 0.0
+  y: 5.0
+  yaw: 0.0
+
+# base_link 上で残す範囲。境界は含まない。単位はメートル。
+scan_range:
+  min_x: -0.05
+  max_x: 2.0
+  min_y: -2.0
+  max_y: 7.0
+
+# 検出する直線の長さ。単位はメートル。
+# length_tolerance は許容幅。length ± length_tolerance の線分だけを採用する。
+line:
+  length: 1.50
+  length_tolerance: 0.10
+  # 再検出で残す点の、推定直線への垂直距離の上限。単位はメートル。これ以上離れた点は除く。
+  refine_distance: 0.020
+
+# /line_center の出力フィルタ。
+# max_center_jump: メートル。これを超える位置の変化は捨てる。
+# max_yaw_jump_deg: 度。これを超える向きの変化は捨てる。
+# jump_reset_count: 連続で捨てた回数。達すると基準をリセットする。
+# smooth_new_ratio: 今回の検出を混ぜる割合。残りは前回の出力。
+line_filter:
+  max_center_jump: 0.3
+  max_yaw_jump_deg: 15.0
+  jump_reset_count: 10
+  smooth_new_ratio: 1.0
