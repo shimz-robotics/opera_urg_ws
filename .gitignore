@@ -1,6 +1,8 @@
 build/
 install/
 log/
+__pycache__/
+*.pyc
 
 # rosbag
 *反射番検出実験/
