@@ -47,3 +47,26 @@ record_urg_bag 反射番検出実験
 ```
 
 例として、`/home/fukase/opera_urg_ws/20261028_1503_反射番検出実験` ができます。
+
+記録した点群と検出結果を見るときは、実機の起動を止めます。`urg_publish.launch.py` と `urg_rviz.launch.py` が動いていると、同じトピックに実機のデータが混ざります。動いていれば、それぞれの端末で Ctrl+C します。
+
+一方の端末で RViz を開きます。Fixed Frame は `world` です。
+
+```bash
+source /opt/ros/humble/setup.bash
+source /home/fukase/opera_urg_ws/install/setup.bash
+ros2 run rviz2 rviz2 \
+  -d /home/fukase/opera_urg_ws/src/opera_urg/rviz/urg_world.rviz \
+  --ros-args -p use_sim_time:=true
+```
+
+RViz が開いてから、別の端末で再生します。`--clock` により、RViz の時刻が記録時の時刻になります。フォルダ名は記録した `年月日時分_タイトル` に置き換えます。
+
+```bash
+source /opt/ros/humble/setup.bash
+ros2 bag play /home/fukase/opera_urg_ws/20261028_1503_反射番検出実験 --clock
+```
+
+再生が終わると点群は消えます。もう一度見るときは、同じ `ros2 bag play` を再実行します。繰り返し再生するときは末尾に `--loop` を付けます。再生中の端末で Space を押すと一時停止し、もう一度押すと再開します。
+
+`/urg_10/points`、`/urg_11/points`、`/line_points`、`/line_center` が記録どおりに出ます。検出プログラムは起動しません。bag 側に検出結果が入っているためです。
