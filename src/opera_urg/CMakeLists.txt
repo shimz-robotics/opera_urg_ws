@@ -10,6 +10,9 @@ install(DIRECTORY launch config rviz
 install(PROGRAMS
   scripts/scan_box_filter.py
   scripts/line_center.py
+  scripts/urg_calibrate.py
+  scripts/urg_world_cloud.py
+  scripts/urg_position_reset.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

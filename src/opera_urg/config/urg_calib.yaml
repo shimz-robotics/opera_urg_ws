@@ -1,0 +1,29 @@
+# 点群を購読する時間。単位は秒。
+duration_sec: 5.0
+
+# 全URGで共通の線分条件。
+# length, length_tolerance, refine_distance, max_gap はメートル。
+# max_angle_from_plus_y_deg は度。センサの +Y から左右にこの角度までを直線として認める。
+line:
+  length: 0.75
+  length_tolerance: 0.10
+  refine_distance: 0.020
+  max_angle_from_plus_y_deg: 10.0
+  max_gap: 0.05
+
+# 各URGの抽出範囲。座標はセンサ座標で、境界は含まない。単位はメートル。
+# URG の +X はスキャン中心の前方向、+Y は左。
+urgs:
+  - ip: "192.168.0.10"
+    scan_range:
+      min_x: 0.05
+      max_x: 3.0
+      min_y: 0.0
+      max_y: 4.0
+  - ip: "192.168.0.11"
+    scan_range:
+      min_x: 0.05
+      max_x: 3.0
+      min_y: -4.0
+      max_y: 0.0
+  
